@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: staging-guessbook-app3
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: staging
+    server: "https://kubernetes.default.svc"
+  project: default
+  source:
+    path: k8s/staging/app3
+    repoURL: "https://gitlab.com/wt-854/argocd-example-apps.git"
+    targetRevision: main
+  syncPolicy:
+    ## Comment out auto sync to test behaviour
+    # automated:
+    #   prune: true
+    #   selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
