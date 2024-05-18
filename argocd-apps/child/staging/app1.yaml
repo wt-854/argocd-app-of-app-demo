@@ -12,8 +12,8 @@ spec:
   project: default
   source:
     path: k8s/staging/app1
-    repoURL: "https://gitlab.com/wt-854/argocd-example-apps.git"
-    targetRevision: main
+    repoURL: "https://github.com/wt-854/argocd-app-of-app-demo.git"
+    targetRevision: master
   syncPolicy:
     automated:
       prune: true

@@ -15,8 +15,8 @@ spec:
   project: default
   source:
     path: argocd-apps/child/prod
-    repoURL: https://gitlab.com/wt-854/argocd-example-apps.git
-    targetRevision: main
+    repoURL: https://github.com/wt-854/argocd-app-of-app-demo.git
+    targetRevision: master
     directory:
       recurse: true
   syncPolicy:

@@ -8,7 +8,7 @@
 
 ## Install ArgoCD to your k8s cluster
 
-- helm upgrade --install --wait --timeout 15m --atomic -n argocd --create-namespace argocd ./argo-cd
+- `helm upgrade --install --wait --timeout 15m --atomic -n argocd --create-namespace argocd ./argo-cd`
 - To get password, run `kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo`
 - To access UI, open another terminal and run `kubectl -n argocd port-forward svc/argocd-server 8080:80`
 
