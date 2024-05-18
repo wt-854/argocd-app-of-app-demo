@@ -19,8 +19,8 @@
 - Type: git
 - Project: default
 - Repository URL (location of where you commit this to)
-- Username (name of token)
-- Password (token that you created)
+- Username (optional (for private repos) - name of token)
+- Password (optional (for private repos) - token that you created)
 - Skip server verification (tick this option)
 - CONNECT (button at the top)
 - Ensure that the Connection Status is successful before proceeding to create new applications
@@ -29,21 +29,23 @@
 
 ### Deploy staging environment to namespace `staging`
 
-- kubectl -n argocd apply -f ./argocd-apps/parent/staging.yaml
+- `kubectl -n argocd apply -f ./argocd-apps/parent/staging.yaml`
 
 ### Deploy prod environment to namespace `prod`
 
-- kubectl -n argocd apply -f ./argocd-apps/parent/prod.yaml
+- `kubectl -n argocd apply -f ./argocd-apps/parent/prod.yaml`
 
 ## Explanation of examples
 
 ### Staging
 
-- 3 `directory` type apps are deployed
+- 3 `directory` type apps are deployed (refer to `argocd-apps/child/staging`)
 - `staging-guesbook-app3` has sync disabled
 - Purpose is to showcase the parent is healthy even though the child is not in sync (parent is managing its child Applications, not the apps that the child Applications are managing)
+- Parent managing child `Applications` can be found at `argocd-apps/parent/staging.yaml`
 
 ### Prod
 
-- 1 `directory` app, 1 `helm` app, 1 `kustomize` app
+- 1 `directory` app, 1 `helm` app, 1 `kustomize` app deployed (`Applications` can be referenced at `argocd-apps/child/prod`)
 - Purpose is to showcase/provide template on how to manage different types of Applications
+- Parent managing child `Applications` can be found at `argocd-apps/parent/prod.yaml`
